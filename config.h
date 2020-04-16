@@ -60,23 +60,23 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "termite", NULL };
-static const char *browser[] = { "firefox", NULL};
-static const char *shhbrowser[] = { "firefox","--private-window", NULL};
-static const char *mute[] = {"amixer","sset","Master","toggle",NULL};
-static const char *volup[] = {"amixer","sset","Master","3%+", "unmute", NULL};
-static const char *voldown[] = {"amixer","sset","Master","3%-", "unmute", NULL};
-static const char *brightup[] = {"sudo","intelbacklight","-inc","50",NULL};
-static const char *brightdown[] = {"sudo","intelbacklight","-dec","50",NULL};
+//static const char *browser[] = { "firefox", NULL};
+//static const char *shhbrowser[] = { "firefox","--private-window", NULL};
+//static const char *mute[] = {"amixer","sset","Master","toggle",NULL};
+//static const char *volup[] = {"amixer","sset","Master","3%+", "unmute", NULL};
+//static const char *voldown[] = {"amixer","sset","Master","3%-", NULL};
+//static const char *brightup[] = {"sudo","intelbacklight","-inc","50",NULL};
+//static const char *brightdown[] = {"sudo","intelbacklight","-dec","50",NULL};
 
 
 static Key keys[] = {
-	{ MODKEY,                       XK_f,      spawn,          {.v = browser } },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = shhbrowser } },
-	{ MODKEY,			XK_Left,   spawn, 	   {.v = mute} },
-	{ MODKEY,			XK_Up,     spawn, 	   {.v = volup} },
-	{ MODKEY,			XK_Down,   spawn, 	   {.v = voldown} },
-	{ MODKEY|ControlMask,		XK_Up,     spawn,          {.v = brightup} },
-	{ MODKEY|ControlMask,           XK_Down,   spawn,          {.v = brightdown} },
+	{ MODKEY,                       XK_f,      spawn,          SHCMD("firefox") },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox --private-browser") },
+	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },
+	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 3%+ unmute;pkill sleep")  },
+	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 3%-;pkill sleep")  },
+	{ MODKEY|ControlMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },
+	{ MODKEY|ControlMask,           XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },
 
 
 	/* modifier                     key        function        argument */
