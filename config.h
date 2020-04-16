@@ -65,6 +65,9 @@ static const char *shhbrowser[] = { "firefox","--private-window", NULL};
 static const char *mute[] = {"amixer","sset","Master","toggle",NULL};
 static const char *volup[] = {"amixer","sset","Master","3%+", "unmute", NULL};
 static const char *voldown[] = {"amixer","sset","Master","3%-", "unmute", NULL};
+static const char *brightup[] = {"sudo","intelbacklight","-inc","50",NULL};
+static const char *brightdown[] = {"sudo","intelbacklight","-dec","50",NULL};
+
 
 static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser } },
@@ -72,7 +75,9 @@ static Key keys[] = {
 	{ MODKEY,			XK_Left,   spawn, 	   {.v = mute} },
 	{ MODKEY,			XK_Up,     spawn, 	   {.v = volup} },
 	{ MODKEY,			XK_Down,   spawn, 	   {.v = voldown} },
-	
+	{ MODKEY|ControlMask,		XK_Up,     spawn,          {.v = brightup} },
+	{ MODKEY|ControlMask,           XK_Down,   spawn,          {.v = brightdown} },
+
 
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
