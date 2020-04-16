@@ -60,11 +60,17 @@ static const char *termcmd[]  = { "termite", NULL };
 static const char *browser[] = { "firefox", NULL};
 static const char *shhbrowser[] = { "firefox","--private-window", NULL};
 static const char *mute[] = {"amixer","sset","Master","toggle",NULL};
+static const char *volup[] = {"amixer","sset","Master","3%+", "unmute", NULL};
+static const char *voldown[] = {"amixer","sset","Master","3%-", "unmute", NULL};
 
 static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          {.v = browser } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = shhbrowser } },
 	{ MODKEY,			XK_Left,   spawn, 	   {.v = mute} },
+	{ MODKEY,			XK_Up,     spawn, 	   {.v = volup} },
+	{ MODKEY,			XK_Down,   spawn, 	   {.v = voldown} },
+	
+
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
@@ -75,7 +81,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_z,	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,       					      XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
