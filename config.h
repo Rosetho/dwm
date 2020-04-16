@@ -1,5 +1,6 @@
 /* appearance */
-static const unsigned int borderpx  = 10;        
+static const unsigned int borderpx  = 4;        
+static const unsigned int gappx     = 10;        
 static const unsigned int snap      = 32;   
 static const int showbar            = 1;       
 static const int topbar             = 1;        
