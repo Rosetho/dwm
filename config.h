@@ -60,31 +60,24 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "termite", NULL };
-//static const char *browser[] = { "firefox", NULL};
-//static const char *shhbrowser[] = { "firefox","--private-window", NULL};
-//static const char *mute[] = {"amixer","sset","Master","toggle",NULL};
-//static const char *volup[] = {"amixer","sset","Master","3%+", "unmute", NULL};
-//static const char *voldown[] = {"amixer","sset","Master","3%-", NULL};
-//static const char *brightup[] = {"sudo","intelbacklight","-inc","50",NULL};
-//static const char *brightdown[] = {"sudo","intelbacklight","-dec","50",NULL};
-
 
 static Key keys[] = {
 	{ MODKEY,                       XK_f,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox --private-browser") },
-	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },
-	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 3%+ unmute;pkill sleep")  },
-	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 3%-;pkill sleep")  },
-	{ MODKEY|ControlMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },
-	{ MODKEY|ControlMask,           XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },
-
-
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox --private-window") },
+	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
+	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 3%+ unmute;pkill sleep")  },	//vol up
+	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 3%-;pkill sleep")  },		//vol down
+	{ MODKEY|ControlMask,		XK_Up,     spawn, 	   SHCMD("amixer sset Master 20%+ unmute;pkill sleep")  },	//big vol up
+	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("amixer sset Master 20%- unmute;pkill sleep")  },	//big vol down
+	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
+	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
+	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
