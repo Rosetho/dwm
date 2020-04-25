@@ -71,6 +71,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("amixer sset Master 20%- unmute;pkill sleep")  },	//big vol down
 	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
+	{ ControlMask|ShiftMask,	XK_Up,	   spawn,	   SHCMD("redshift -P -O 4000K") },
+	{ ControlMask|ShiftMask,	XK_Down,   spawn,	   SHCMD("redshift -P -O 2000K") },
 	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
