@@ -37,14 +37,14 @@ static const Rule rules[] = {
 static const float mfact     = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-#include "fibonacci.c"
+//#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	/* first entry is default */
 	{ "[]=",      tile },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "[@]",      spiral },
+	//{ "[@]",      spiral },
 };
 
 /* key definitions */
@@ -64,8 +64,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
-	{ MODKEY,                       XK_f,      spawn,          SHCMD("firefox") },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("firefox --private-window") },
+	{ MODKEY, 			XK_s, 	   spawn,	   SHCMD("spotify") },	
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
+	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name '$(cpumem)'") },				//show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
 	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 3%+ unmute;pkill sleep")  },	//vol up
 	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 3%-;pkill sleep")  },		//vol down
@@ -74,14 +75,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
 	{ ControlMask|ShiftMask,	XK_Up,	   spawn,	   SHCMD("redshift -P -O 4000K") },
-	{ ControlMask|ShiftMask,	XK_Down,   spawn,	   SHCMD("redshift -P -O 2000K") },
+	{ ControlMask|ShiftMask,	XK_Down,   spawn,	   SHCMD("redshift -P -O 1500K") },
 	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -89,10 +90,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_z,	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_n,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
