@@ -64,7 +64,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
-	{ MODKEY, 			XK_s, 	   spawn,	   SHCMD("spotify") },	
+	{ MODKEY|ShiftMask, 			XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
 	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name '$(cpumem)'") },				//show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
@@ -83,10 +83,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_u,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_j,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_k,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z,	   zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
