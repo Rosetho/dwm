@@ -14,7 +14,7 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_green[]   = "#00e000";	
 static const char col_cyan[]    = "#005577";
-static const unsigned int baralpha = 0xb0;//0x0 is full tranparent
+static const unsigned int baralpha = 0xa0;//0x0 is full tranparent
 static const unsigned int borderalpha = 0xd0;//OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -72,12 +72,12 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
-	{ MODKEY|ShiftMask, 			XK_s, 	   spawn,	   SHCMD("spotify") },	
+	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
-	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name '$(cpumem)'") },				//show mem and cpu info on status
+	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },	//show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
-	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 3%+ unmute;pkill sleep")  },	//vol up
-	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 3%-;pkill sleep")  },		//vol down
+	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 5%+ unmute;pkill sleep")  },	//vol up
+	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 5%-;pkill sleep")  },		//vol down
 	{ MODKEY|ControlMask,		XK_Up,     spawn, 	   SHCMD("amixer sset Master 20%+ unmute;pkill sleep")  },	//big vol up
 	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("amixer sset Master 20%- unmute;pkill sleep")  },	//big vol down
 	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
