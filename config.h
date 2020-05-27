@@ -72,6 +72,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
+	{ MODKEY|ShiftMask|ControlMask, XK_Escape, spawn,	   SHCMD("poweroff") },
+	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,	   SHCMD("reboot") },
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
 	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },	//show mem and cpu info on status
