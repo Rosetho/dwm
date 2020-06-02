@@ -72,11 +72,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "termite", NULL };
 
 static Key keys[] = {
+
 	{ MODKEY|ShiftMask|ControlMask, XK_Escape, spawn,	   SHCMD("poweroff") },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,	   SHCMD("reboot") },
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
-	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },	//show mem and cpu info on status
+
+	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },			//show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
 	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 5%+ unmute;pkill sleep")  },	//vol up
 	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 5%-;pkill sleep")  },		//vol down
@@ -84,8 +86,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("amixer sset Master 20%- unmute;pkill sleep")  },	//big vol down
 	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
-	{ ControlMask|ShiftMask,	XK_Up,	   spawn,	   SHCMD("redshift -P -O 4000K") },
-	{ ControlMask|ShiftMask,	XK_Down,   spawn,	   SHCMD("redshift -P -O 1500K") },
+	{ MODKEY,			XK_r,      spawn,	   SHCMD("redshift -P -O 1500K") },    				//red light filter on
+	{ MODKEY|ShiftMask,		XK_r,      spawn,	   SHCMD("redshift -P -O 4000K") },    				//red light filter off
 	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
