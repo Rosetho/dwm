@@ -50,7 +50,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	/* first entry is default */
 	{ "[]=",      tile },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+//	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	//{ "[@]",      spiral },
 };
@@ -78,35 +78,35 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
 
-	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },			//show mem and cpu info on status
-	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("amixer sset Master toggle;pkill sleep") },		//unmute
-	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("amixer sset Master 5%+ unmute;pkill sleep")  },	//vol up
-	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("amixer sset Master 5%-;pkill sleep")  },		//vol down
-	{ MODKEY|ControlMask,		XK_Up,     spawn, 	   SHCMD("amixer sset Master 20%+ unmute;pkill sleep")  },	//big vol up
-	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("amixer sset Master 20%- unmute;pkill sleep")  },	//big vol down
-	{ MODKEY|ShiftMask,		XK_Up,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
-	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
-	{ MODKEY,			XK_r,      spawn,	   SHCMD("redshift -P -O 1500K") },    				//red light filter on
-	{ MODKEY|ShiftMask,		XK_r,      spawn,	   SHCMD("redshift -P -O 4000K") },    				//red light filter off
+	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },	   //show mem and cpu info on status
+	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("volctl mute; refreshbar") },		//unmute
+	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("volctl up; refreshbar")  },		//vol up
+	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("volctl down; refreshbar")  }, 	//vol down
+	{ MODKEY|ControlMask,		XK_Up,     spawn, 	   SHCMD("volctl bup; refreshbar")  },			//big vol up
+	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("volctl bdown; refreshbar")  },		//big vol down
+	{ MODKEY,			XK_F6,     spawn,          SHCMD("sudo intelbacklight -inc 50") },			//brightness down
+	{ MODKEY,	                XK_F5,     spawn,          SHCMD("sudo intelbacklight -dec 50") },			//brightness up
+	{ MODKEY,			XK_r,      spawn,	   SHCMD("redshift -P -O 1500K") },    		//red light filter on
+	{ MODKEY|ShiftMask,		XK_r,      spawn,	   SHCMD("redshift -P -O 4000K") },    		//red light filter off
 	
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_l,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_h,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_u,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_j,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_k,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_z,	   zoom,           {0} },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_n,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	//{ MODKEY,                       XK_s,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	//{ MODKEY,                     XK_n,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                     XK_s,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_z,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
