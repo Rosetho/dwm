@@ -78,7 +78,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
 
-	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("xsetroot -name \"$(cpumem)\"") },	   //show mem and cpu info on status
+	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("statusinfo") },	   //show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("volctl mute; refreshbar") },		//unmute
 	{ ControlMask,			XK_Up,     spawn, 	   SHCMD("volctl up; refreshbar")  },		//vol up
 	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("volctl down; refreshbar")  }, 	//vol down
