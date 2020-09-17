@@ -84,13 +84,11 @@ static Key keys[] = {
 	{ ControlMask,			XK_Down,   spawn, 	   SHCMD("volctl down; refreshbar")  }, 	//vol down
 	{ MODKEY|ControlMask,		XK_Up,     spawn, 	   SHCMD("volctl bup; refreshbar")  },		//big vol up
 	{ MODKEY|ControlMask,		XK_Down,   spawn, 	   SHCMD("volctl bdown; refreshbar")  },	//big vol down
-	{0, XF86XK_AudioMute, 	                   spawn,          SHCMD("volctl mute; refreshbar") },	//mute
-	{0, XF86XK_AudioRaiseVolume,               spawn,          SHCMD("amixer sset Master 100% unmute;refreshbar") },//max vol	
-	{0, XF86XK_AudioLowerVolume, 	           spawn,          SHCMD("amixer sset Master 33% unmute;refreshbar") },	//low vol	
+	{0, XF86XK_AudioMute, 	                   spawn,          SHCMD("volctl mute; refreshbar") },		//mute
+	{0, XF86XK_AudioRaiseVolume,               spawn,          SHCMD("volctl up;refreshbar") },		//volup	
+	{0, XF86XK_AudioLowerVolume, 	           spawn,          SHCMD("volctl down;refreshbar") },		//voldown	
 	{0, XF86XK_MonBrightnessUp, 	           spawn,          SHCMD("sudo intelbacklight -inc 70") },	//brightness up
 	{0, XF86XK_MonBrightnessDown,              spawn,          SHCMD("sudo intelbacklight -dec 70") },	//brightness dwon	
-	{ MODKEY,			XK_F6,     spawn,          SHCMD("sudo intelbacklight -set 937") },	//brightness max
-	{ MODKEY,	                XK_F5,     spawn,          SHCMD("sudo intelbacklight -set 150") },	//brightness min
 	{ MODKEY,			XK_r,      spawn,	   SHCMD("redshift -P -O 1500K") },    	//red light filter on
 	{ MODKEY|ShiftMask,		XK_r,      spawn,	   SHCMD("redshift -P -O 4000K") },   	//red light filter off
 	
