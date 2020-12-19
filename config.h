@@ -1,11 +1,11 @@
 /* appearance */
 static const unsigned int borderpx  = 4;        
-static const unsigned int gappx     = 10;        
+static const unsigned int gappx     = 5;        
 static const unsigned int snap      = 32;   
 static const int showbar            = 1;       
 static const int topbar             = 1;        
-static const char *fonts[]          = { "monospace:size=13" };
-static const char dmenufont[]       = "monospace:size=13";
+static const char *fonts[]          = { "monospace:size=15" };
+static const char dmenufont[]       = "monospace:size=15";
 static const char col_black[]	    = "#000000";
 static const char col_gray1[]       = "#222222";
 static const char col_darkblue[]    = "#000033";
@@ -71,12 +71,12 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "urxvt", NULL };
 
 static Key keys[] = {
-
+	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   SHCMD("urxvt -e alsamixer") },
 	{ MODKEY|ShiftMask|ControlMask, XK_Escape, spawn,	   SHCMD("poweroff") },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,	   SHCMD("reboot") },
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
-
+	{ MODKEY|ControlMask,		XK_Return, spawn,	   SHCMD("urxvt -e ranger")},
 	{ MODKEY|ShiftMask, 		XK_i, 	   spawn,	   SHCMD("statusmyip") },   //show ip addr	
 	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("statuscpumem") }, //show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("volctl mute; refreshbar") },		//unmute
