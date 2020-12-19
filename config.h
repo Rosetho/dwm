@@ -69,14 +69,16 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
-
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpad[] = { "urxvt", "-title", "scratchpad", "-e", "ranger", NULL };
 static Key keys[] = {
-	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   SHCMD("urxvt -e alsamixer") },
+	{ MODKEY|ControlMask,		XK_a,	   spawn,	   SHCMD("urxvt -title scratchpad -e alsamixer") },
+	{ MODKEY|ControlMask,           XK_Return, togglescratch, {.v = scratchpad } },
+	
 	{ MODKEY|ShiftMask|ControlMask, XK_Escape, spawn,	   SHCMD("poweroff") },
 	{ MODKEY|ShiftMask|ControlMask, XK_r,      spawn,	   SHCMD("reboot") },
 	{ MODKEY|ShiftMask, 		XK_s, 	   spawn,	   SHCMD("spotify") },	
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
-	{ MODKEY|ControlMask,		XK_Return, spawn,	   SHCMD("urxvt -e ranger")},
 	{ MODKEY|ShiftMask, 		XK_i, 	   spawn,	   SHCMD("statusmyip") },   //show ip addr	
 	{ MODKEY, 			XK_m, 	   spawn,	   SHCMD("statuscpumem") }, //show mem and cpu info on status
 	{ ControlMask,			XK_Left,   spawn, 	   SHCMD("volctl mute; refreshbar") },		//unmute
